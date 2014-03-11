@@ -1,0 +1,16 @@
+development: 
+  adapter: postgresql
+  encoding: UTF8
+  database: agenda_de_sala_development
+  username: luciannaalmeida
+  password:
+  host: localhost
+    
+test: 
+  adapter: postgresql
+  encoding: UTF8
+  database: agenda_de_sala_test
+  username: luciannaalmeida
+  password:
+  host: localhost
+    
