@@ -19,6 +19,10 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe ReservationsController do
+  before :each do
+    user = FactoryGirl.create(:user)
+    sign_in :user, user
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Reservation. As you add validations to Reservation, be sure to

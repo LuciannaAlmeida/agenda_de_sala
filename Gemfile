@@ -31,10 +31,11 @@ gem 'jbuilder', '~> 1.2'
 # Add Authentication
 gem 'devise'
 
-
 # rspec
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'factory_girl_rails'
+  gem "capybara"
 end
 
 group :doc do

@@ -3,7 +3,7 @@ class CreateReservations < ActiveRecord::Migration
     create_table :reservations do |t|
       t.string  :day
       t.string  :hour
-      
+
       t.timestamps
     end
   end
