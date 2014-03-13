@@ -16,20 +16,19 @@
         <th><%= hour %></th>
         <%- week_days.each do |day| -%>
           <td>
-            Disponivel
+            <%- if reservation=find_reservation(hour, day) -%>
+              <%- if reserved_for_current_user?(reservation) -%>
+                <%= link_to "Reservado para #{reserved_for(reservation)}", reservation,
+                    method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%- else -%>
+                Reservado para <%= reserved_for(reservation) %>
+              <%- end -%>
+            <%- else -%>
+              <%= link_to "Disponivel", new_reservation_path %>
+            <%- end -%>
           </td>
         <%- end -%>
       </tr>
     <%- end -%>
-
-    <% @reservations.each do |reservation| %>
-      <tr>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Reservation', new_reservation_path %>

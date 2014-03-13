@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :reservation do
+    hour '09:00'
+    day  'Thu'
+    user
   end
 end

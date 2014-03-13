@@ -11,6 +11,14 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :user_id, value: current_user.id %></div>
+
+  <div><%= f.label :hour, 'Hora' %><br />
+  <%= f.text_field :hour, autofocus: true %></div>
+
+  <div><%= f.label :day, 'Day' %><br />
+  <%= f.text_field :day %></div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
