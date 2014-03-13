@@ -11,5 +11,22 @@ require 'spec_helper'
 #   end
 # end
 describe ReservationsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe "#week_days" do
+    it "return an array with {db_key => formatted_name} for each week day from Mon to Fri" do
+      wdays = [ "Mon", "Tue", "Wed", "Thu", "Fri" ]
+                
+      expect(helper.week_days).to eq(wdays)
+    end
+  end
+  
+  describe "#week_days" do
+    it "return an array with {db_key => formatted_name} for each week day from Mon to Fri" do
+      hours = [ "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", 
+                "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" ]
+                
+      expect(helper.hours).to eq(hours)
+    end
+  end
+  
 end

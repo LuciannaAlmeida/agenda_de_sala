@@ -2,6 +2,14 @@ pt-BR:
   user: Usuário
   edit_profile: Editar profile
   logout: Sair
+  week_days:
+    Mon: Segunda
+    Tue: Terça
+    Wed: Quarta
+    Thu: Quinta
+    Fri: Sexta
+    Sat: Sábado
+    Sun: Domingo
   
   # translating Rails' defaults
   date:

@@ -3,17 +3,27 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Horário</th>
+      <%- week_days.each do |day| -%>
+        <th><%= t("week_days.#{day}") %></th>
+      <%- end -%>
     </tr>
   </thead>
 
   <tbody>
+    <%- hours.each do |hour| -%>
+      <tr>
+        <th><%= hour %></th>
+        <%- week_days.each do |day| -%>
+          <td>
+            Disponivel
+          </td>
+        <%- end -%>
+      </tr>
+    <%- end -%>
+
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
         <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
