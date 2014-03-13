@@ -20,14 +20,14 @@ require 'spec_helper'
 
 describe ReservationsController do
   before :each do
-    user = FactoryGirl.create(:user)
-    sign_in :user, user
+    @user = FactoryGirl.create(:user)
+    sign_in :user, @user
   end
 
   # This should return the minimal set of attributes required to create a valid
   # Reservation. As you add validations to Reservation, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {  } }
+  let(:valid_attributes) { { user_id: @user_id } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -89,59 +89,15 @@ describe ReservationsController do
       it "assigns a newly created but unsaved reservation as @reservation" do
         # Trigger the behavior that occurs when invalid params are submitted
         allow_any_instance_of(Reservation).to receive(:save).and_return(false)
-        post :create, {:reservation => {  }}, valid_session
+        post :create, {:reservation => { user_id: @user.id  }}, valid_session
         expect(assigns(:reservation)).to be_a_new(Reservation)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         allow_any_instance_of(Reservation).to receive(:save).and_return(false)
-        post :create, {:reservation => {  }}, valid_session
+        post :create, {:reservation => { user_id: @user.id }}, valid_session
         expect(response).to render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested reservation" do
-        reservation = Reservation.create! valid_attributes
-        # Assuming there are no other reservations in the database, this
-        # specifies that the Reservation created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        expect_any_instance_of(Reservation).to receive(:update).with({ "these" => "params" })
-        put :update, {:id => reservation.to_param, :reservation => { "these" => "params" }}, valid_session
-      end
-
-      it "assigns the requested reservation as @reservation" do
-        reservation = Reservation.create! valid_attributes
-        put :update, {:id => reservation.to_param, :reservation => valid_attributes}, valid_session
-        expect(assigns(:reservation)).to eq(reservation)
-      end
-
-      it "redirects to the reservation" do
-        reservation = Reservation.create! valid_attributes
-        put :update, {:id => reservation.to_param, :reservation => valid_attributes}, valid_session
-        expect(response).to redirect_to(reservation)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the reservation as @reservation" do
-        reservation = Reservation.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(Reservation).to receive(:save).and_return(false)
-        put :update, {:id => reservation.to_param, :reservation => {  }}, valid_session
-        expect(assigns(:reservation)).to eq(reservation)
-      end
-
-      it "re-renders the 'edit' template" do
-        reservation = Reservation.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(Reservation).to receive(:save).and_return(false)
-        put :update, {:id => reservation.to_param, :reservation => {  }}, valid_session
-        expect(response).to render_template("edit")
       end
     end
   end
