@@ -1,2 +1,2 @@
 <%= link_to "Reservado para #{reserved_for(reservation)}", reservation,
-    method: :delete, remote: true, id: "reserved-#{reservation.hour.gsub(':', '')}-#{reservation.day}" %>
+    method: :delete, remote: true, id: "reserved-#{remove_colons(reservation.hour)}-#{reservation.day}" %>

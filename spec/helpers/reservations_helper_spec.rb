@@ -57,4 +57,11 @@ describe ReservationsHelper do
     end
   end
 
+  describe "#remove_colon" do
+    it "removes all colons of a string" do
+      hour = "06:00"
+      expect(helper.remove_colons(hour)).to eq("0600")
+    end
+  end
+
 end

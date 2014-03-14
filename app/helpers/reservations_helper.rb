@@ -24,4 +24,7 @@ module ReservationsHelper
     current_user.id == reservation.user.id
   end
 
+  def remove_colons(string)
+    string.gsub(':', '')
+  end
 end
