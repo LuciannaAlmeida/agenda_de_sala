@@ -1,0 +1,2 @@
+$('#available-<%= @reservation.hour.gsub(':', '') %>-<%= @reservation.day %>').after('<%= j render :partial => 'reserved_room', :locals => { reservation: @reservation } %>');
+$('#available-<%= @reservation.hour.gsub(':', '') %>-<%= @reservation.day %>').remove();

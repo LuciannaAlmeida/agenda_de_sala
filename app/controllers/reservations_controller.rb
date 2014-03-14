@@ -29,11 +29,13 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+        format.html { redirect_to reservations_path, notice: 'Reservation was successfully created.' }
         format.json { render action: 'show', status: :created, location: @reservation }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -55,10 +57,13 @@ class ReservationsController < ApplicationController
   # DELETE /reservations/1
   # DELETE /reservations/1.json
   def destroy
+    @hour = @reservation.hour
+    @day  = @reservation.day
     @reservation.destroy
     respond_to do |format|
       format.html { redirect_to reservations_url }
       format.json { head :no_content }
+      format.js
     end
   end
 

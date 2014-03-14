@@ -81,7 +81,7 @@ describe ReservationsController do
 
       it "redirects to the created reservation" do
         post :create, {:reservation => valid_attributes}, valid_session
-        expect(response).to redirect_to(Reservation.last)
+        expect(response).to redirect_to(reservations_path)
       end
     end
 

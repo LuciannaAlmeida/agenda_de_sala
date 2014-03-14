@@ -1,4 +1,4 @@
-<h1>Listing reservations</h1>
+<h1>Reserva de Sala</h1>
 
 <table>
   <thead>
@@ -18,13 +18,12 @@
           <td>
             <%- if reservation=find_reservation(hour, day) -%>
               <%- if reserved_for_current_user?(reservation) -%>
-                <%= link_to "Reservado para #{reserved_for(reservation)}", reservation,
-                    method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= render :partial => 'reserved_room', :locals => { reservation: reservation } %>
               <%- else -%>
                 Reservado para <%= reserved_for(reservation) %>
               <%- end -%>
             <%- else -%>
-              <%= link_to "Disponivel", new_reservation_path %>
+              <%= render :partial => 'available_room', :locals => { hour: hour, day: day } %>
             <%- end -%>
           </td>
         <%- end -%>

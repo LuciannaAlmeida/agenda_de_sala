@@ -1,0 +1,1 @@
+<%= link_to "Disponivel", {controller: :reservations, action: :create, reservation: {user_id: current_user.id, hour: "#{hour}", day: "#{day}" }}, method: :post, remote: true, id: "available-#{hour.gsub(':', '')}-#{day}" %>
