@@ -1,25 +1,11 @@
 class ReservationsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :set_reservation, only: [:destroy]
 
   # GET /reservations
   # GET /reservations.json
   def index
     @reservations = Reservation.all
-  end
-
-  # GET /reservations/1
-  # GET /reservations/1.json
-  def show
-  end
-
-  # GET /reservations/new
-  def new
-    @reservation = Reservation.new
-  end
-
-  # GET /reservations/1/edit
-  def edit
   end
 
   # POST /reservations
@@ -36,20 +22,6 @@ class ReservationsController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
         format.js
-      end
-    end
-  end
-
-  # PATCH/PUT /reservations/1
-  # PATCH/PUT /reservations/1.json
-  def update
-    respond_to do |format|
-      if @reservation.update(reservation_params)
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
     end
   end

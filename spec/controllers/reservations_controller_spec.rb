@@ -42,29 +42,6 @@ describe ReservationsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested reservation as @reservation" do
-      reservation = Reservation.create! valid_attributes
-      get :show, {:id => reservation.to_param}, valid_session
-      expect(assigns(:reservation)).to eq(reservation)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new reservation as @reservation" do
-      get :new, {}, valid_session
-      expect(assigns(:reservation)).to be_a_new(Reservation)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested reservation as @reservation" do
-      reservation = Reservation.create! valid_attributes
-      get :edit, {:id => reservation.to_param}, valid_session
-      expect(assigns(:reservation)).to eq(reservation)
-    end
-  end
-
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Reservation" do
@@ -82,22 +59,6 @@ describe ReservationsController do
       it "redirects to the created reservation" do
         post :create, {:reservation => valid_attributes}, valid_session
         expect(response).to redirect_to(reservations_path)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved reservation as @reservation" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(Reservation).to receive(:save).and_return(false)
-        post :create, {:reservation => { user_id: @user.id  }}, valid_session
-        expect(assigns(:reservation)).to be_a_new(Reservation)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(Reservation).to receive(:save).and_return(false)
-        post :create, {:reservation => { user_id: @user.id }}, valid_session
-        expect(response).to render_template("new")
       end
     end
   end
