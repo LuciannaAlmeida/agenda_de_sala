@@ -32,6 +32,11 @@ gem 'jbuilder', '~> 1.2'
 # Add Authentication
 gem 'devise'
 
+# Twitter bootstrap
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+
 # rspec
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'

@@ -1,11 +1,15 @@
 <h1>Reserva de Sala</h1>
 
-<table>
+<table class='table table-striped'>
   <thead>
     <tr>
       <th>Horário</th>
       <%- week_days.each do |day| -%>
-        <th><%= t("week_days.#{day}") %></th>
+        <th>
+          <div class='text-center'>
+            <%= t("week_days.#{day}") %>
+          </div>
+        </th>
       <%- end -%>
     </tr>
   </thead>
@@ -16,15 +20,17 @@
         <th><%= hour %></th>
         <%- week_days.each do |day| -%>
           <td>
-            <%- if reservation=find_reservation(hour, day) -%>
-              <%- if reserved_for_current_user?(reservation) -%>
-                <%= render :partial => 'reserved_room', :locals => { reservation: reservation } %>
+            <div class='text-center'>
+              <%- if reservation=find_reservation(hour, day) -%>
+                <%- if reserved_for_current_user?(reservation) -%>
+                  <%= render :partial => 'reserved_room', :locals => { reservation: reservation } %>
+                <%- else -%>
+                    Reservado para <%= reserved_for(reservation) %>
+                <%- end -%>
               <%- else -%>
-                Reservado para <%= reserved_for(reservation) %>
+                <%= render :partial => 'available_room', :locals => { hour: hour, day: day } %>
               <%- end -%>
-            <%- else -%>
-              <%= render :partial => 'available_room', :locals => { hour: hour, day: day } %>
-            <%- end -%>
+            </div>
           </td>
         <%- end -%>
       </tr>
