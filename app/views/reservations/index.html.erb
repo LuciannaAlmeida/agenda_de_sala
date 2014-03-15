@@ -3,7 +3,9 @@
 <table class='table table-striped'>
   <thead>
     <tr>
-      <th>Horário</th>
+      <th>
+        <div>Horário</div>
+      </th>
       <%- week_days.each do |day| -%>
         <th>
           <div class='text-center'>
@@ -17,7 +19,9 @@
   <tbody>
     <%- hours.each do |hour| -%>
       <tr>
-        <th><%= hour %></th>
+        <th>
+          <div><%= hour %></div>
+        </th>
         <%- week_days.each do |day| -%>
           <td>
             <div class='text-center'>

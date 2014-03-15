@@ -18,8 +18,8 @@
           <%= link_to user_name(current_user), edit_user_registration_path, :class => 'blog-nav-item' %> |
           <%= link_to t(:logout, default: 'Logout'), destroy_user_session_path, method: :delete, :class => 'blog-nav-item' %>
         <% else %>
-          <%= link_to 'Sign up', new_user_registration_path, :class => 'blog-nav-item' %> |
-          <%= link_to 'Login', new_user_session_path, :class => 'blog-nav-item' %>
+          <%= link_to t('devise.forms.signup'), new_user_registration_path, :class => 'blog-nav-item' %> |
+          <%= link_to t('devise.forms.signin'), new_user_session_path, :class => 'blog-nav-item' %>
         <% end %>
       </div>
   </div>

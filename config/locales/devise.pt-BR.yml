@@ -20,6 +20,21 @@ pt-BR:
         password_confirmation: Confirme sua Senha
  
   devise:
+    forms:
+      edit_profile: 'Editar Perfil'
+      update: 'Atualizar'
+      signup: 'Cadastrar-se'
+      signup_form: 'Cadastro'
+      signin: 'Login'
+      back: 'Voltar'
+      change_password_msg: '(deixe em branco se você não deseja alterar a senha)'
+      password_required_to_edit_profile_msg: '(precisamos da sua senha atual para confirmar as alterações)'
+      current_password: 'Senha Atual'
+      cancel_my_account: 'Cancelar meu cadastro'
+      delete_my_account: 'Deletar meu cadastro'
+      want_to_delete_your_account: 'Deseja deletar o seu cadastro?'
+      forgot_password: 'Esqueceu sua senha?'
+      send_me_reset_password_instructions: 'Me envie instruções para criar uma nova senha'
     failure:
       already_authenticated: 'Você já está logado.'
       unauthenticated: 'Você precisa registrar-se ou fazer login para continuar.'

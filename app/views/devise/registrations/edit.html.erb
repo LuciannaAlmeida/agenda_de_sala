@@ -1,29 +1,38 @@
 <div class='col-md-4'>
-  <h2>Editar Usuário</h2>
+  <h2><%= t 'devise.forms.edit_profile' %></h2>
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
 
-    <div><%= f.email_field :email, :autofocus => true, placeholder: 'Email' %></div>
+    <div>
+      <%= f.email_field :email, :autofocus => true, placeholder: t('activerecord.attributes.user.email') %>
+    </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
+    <div>
+      <i><%= t 'devise.forms.change_password_msg' %></i><br />
+      <%= f.password_field :password, :autocomplete => "off", placeholder: t('activerecord.attributes.user.password') %>
+    </div>
 
-    <div><i>(deixe em branco se você não deseja alterar a senha)</i><br />
-    <%= f.password_field :password, :autocomplete => "off", placeholder: 'Senha' %></div>
+    <div>
+      <%= f.password_field :password_confirmation, placeholder: t('activerecord.attributes.user.password_confirmation') %>
+    </div>
 
-    <div><%= f.password_field :password_confirmation, placeholder: 'Confirme sua Senha' %></div>
+    <div>
+      <i><%= t 'devise.forms.password_required_to_edit_profile_msg' %></i><br />
+      <%= f.password_field :current_password, placeholder: t('devise.forms.current_password') %>
+    </div>
 
-    <div><i>(precisamos da sua senha atual para confirmar as alterações)</i><br />
-    <%= f.password_field :current_password, placeholder: 'Senha Atual' %></div>
-
-    <div><%= f.submit "Update" %></div>
+    <div>
+      <%= f.submit t 'devise.forms.update' %>
+    </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <h3><%= t 'devise.forms.cancel_my_account' %></h3>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+  <p>
+    <%= t 'devise.forms.want_to_delete_your_account' %>
+    <%= button_to t('devise.forms.delete_my_account'), registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+  </p>
 
-  <%= link_to "Back", :back %>
+  <%= link_to t('devise.forms.back'), :back %>
 </div>

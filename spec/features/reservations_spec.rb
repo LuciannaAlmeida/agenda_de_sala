@@ -7,7 +7,7 @@ describe "Reservations" do
       visit reservations_path
       fill_in "Email", with: user.email
       fill_in "Senha", with: user.password
-      click_button "Sign in"
+      click_button "Login"
     end
     
     it "works! (now write some real specs)" do
