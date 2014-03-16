@@ -24,12 +24,12 @@
         </th>
         <%- week_days.each do |day| -%>
           <td>
-            <div class='text-center'>
+            <div class='text-center' id='window-<%= remove_colons(hour) %>-<%= day %>'>
               <%- if reservation=find_reservation(hour, day) -%>
                 <%- if reserved_for_current_user?(reservation) -%>
                   <%= render :partial => 'reserved_room', :locals => { reservation: reservation } %>
                 <%- else -%>
-                    Reservado para <%= reserved_for(reservation) %>
+                    <span id="reserved-<%= remove_colons(hour) %>-<%= day %>">Reservado para <%= reserved_for(reservation) %></span>
                 <%- end -%>
               <%- else -%>
                 <%= render :partial => 'available_room', :locals => { hour: hour, day: day } %>
